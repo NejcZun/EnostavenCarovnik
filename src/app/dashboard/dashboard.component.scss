@@ -1,0 +1,181 @@
+  .card {
+    padding: 30px;
+    border-radius: 10px;
+  }
+  /** -- header -- **/
+  .card .card-header {
+    text-align: center;
+    background-color: #FFFFFF;
+    border:none;
+    padding: 0rem 1.25rem;
+  }
+  .card .card-header-description{
+     font-size:12px;
+     color: #ae8cd9;
+     padding: 0rem 1.25rem;
+  }
+  .card .card-header-description-item{
+      width:33%;
+      display:inline-block;
+      text-align:center;
+      padding-left:15px;
+      padding-right:15px;
+      display:none;
+      word-wrap: normal;
+  }
+  .card .card-header-description-item.show{
+    display:block;
+  }
+  /** -- end header -- **/
+
+  /** -- buttons -- **/
+  .card .card-btn {
+    background-color: #ae8cd9;
+    text-decoration: none;
+    border-radius: 15px;
+    color: #ffffff;
+    display: inline-block;
+    padding: 5px 0px;
+    width:150px;
+    text-align: center;
+    font-weight: 500;
+  }
+  .card .card-btn-shadow{
+    box-shadow: 0 4px 4px rgba(174,140,217, 0.7);
+  }
+  .card .card-btn:hover {
+    transition-duration: 0.4s;
+    background-color: rgba(174,140,217, 0.9);
+    
+  }
+  .card .card-btn:active {
+    background-color: #ae8cd9;
+    box-shadow: 0 4px rgba(174,140,217, 0.7);
+    transform: translateY(4px);
+  }
+  /** -- end buttons -- **/
+
+
+  /** -- card content (per-step) -- **/
+
+  .card .step-counter{
+
+    display: block;
+    text-align:right;
+    color:gray;
+    padding-bottom:40px;
+    font-size:14px;
+  }
+
+  .card .card-content {
+    display: none;
+  }
+  .card .card-content.show {
+    display: block;
+  }
+  .card .form-control-round{
+      border-radius: 10px;
+  }
+  .col-form-label{
+      word-wrap: normal;
+  }
+  .form-control-round:focus{
+    outline: none;
+    border: 1px solid #ae8cd9 !important;
+    box-shadow: 0 0 1px #ae8cd9 !important;
+    -moz-box-shadow: 0 0 1px #ae8cd9 !important;
+    -webkit-box-shadow: 0 0 1px #ae8cd9 !important;
+   }
+  .card .wizard-form-error {
+    display: none;
+    background-color: #d70b0b;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+  }
+
+  /** -- end card content -- **/
+
+
+  /** -- steps -- **/
+
+  .card .card-steps li {
+    width: 33%;
+    float: left;
+    position: relative;
+  }
+  .card .card-steps li::after {
+    background-color: #f3f3f3;
+    content: "";
+    height: 4px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+  .card .card-steps li span {
+    background-color: #dddddd;
+    border-radius: 50%;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    width: 40px;
+    z-index: 1;
+  }
+  .card .card-steps li:last-child::after {
+    width: 50%;
+  }
+  .card .card-steps li.active span, .card .card-steps li.activated span {
+    background-color: #ae8cd9;
+    color: #ffffff;
+  }
+  .card .card-steps li.active::after, .card .card-steps li.activated::after {
+    background-color: #ae8cd9;
+    left: 50%;
+    width: 50%;
+    border-color: #ae8cd9;
+  }
+  .card .card-steps li.activated::after {
+    width: 100%;
+    border-color: #ae8cd9;
+  }
+  .card .card-steps li:last-child::after {
+    left: 0;
+  }
+
+
+  /** -- end steps -- **/
+
+  //** -- animations -- **/
+
+  @keyframes click-radio-wave {
+    0% {
+      width: 25px;
+      height: 25px;
+      opacity: 0.35;
+      position: relative;
+    }
+    100% {
+      width: 60px;
+      height: 60px;
+      margin-left: -15px;
+      margin-top: -15px;
+      opacity: 0.0;
+    }
+  }
+
+  //** -- end animations -- */
+
+  @media screen and (max-width: 767px) {
+    .card-content-left {
+      height: auto;
+    }
+  }
+  
