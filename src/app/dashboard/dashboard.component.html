@@ -1,146 +1,139 @@
 <div class="row">
+    <!-- poravnava na sredino -->
     <div class="col-lg-6 col-md-6 offset-md-3">
         <div class="card">
-            <form [formGroup]="uporabnikForm" (ngSubmit)="validate_osebni_podatki()">
-                <div class="card-header">
-                    <ul class="list-unstyled card-steps clearfix">
-                        <li [ngClass]="{'activated' : trenutni_korak > 1}" class="active"><span><i class="fas fa-user"></i></span></li>
-                        <li [ngClass]="{'active' : trenutni_korak == 2}" [ngClass]="{'activated' : trenutni_korak > 2}"><span><i class="fas fa-university"></i></span></li>
-                        <li [ngClass]="{'active' : trenutni_korak == 3}"><span><i class="fas fa-address-card"></i></span></li>
-                    </ul>
+            <div class="card-header">
+                <ul class="list-unstyled card-steps clearfix">
+                    <li [ngClass]="{'activated' : trenutni_korak > 1}" class="active"><span><i class="fas fa-user"></i></span></li>
+                    <li [ngClass]="{'active' : trenutni_korak == 2, 'activated' : trenutni_korak > 2}"><span><i class="fas fa-university"></i></span></li>
+                    <li [ngClass]="{'active' : trenutni_korak == 3}"><span><i class="fas fa-address-card"></i></span></li>
+                </ul>
+            </div>
+            <!-- header description itemi -->
+            <div class="card-header-description row">
+                <span class="card-header-description-item" [ngClass]="{'show-item' : trenutni_korak == 1}">Osebni podatki</span>
+                <span class="card-header-description-item" [ngClass]="{'show-item' : trenutni_korak == 2}">Izbira izobrazbe</span>
+                <span class="card-header-description-item" [ngClass]="{'show-item' : trenutni_korak == 3}">Predogled podatkov</span>
+            </div>
+            <hr>
+
+            <!-- KORAK 1 -->
+            
+            <div class="card-content" [ngClass]="{'show' : trenutni_korak == 1}">
+                <form [formGroup]="uporabnikForm">
+                <div class="step-counter">Korak {{trenutni_korak}}/{{stevilo_vseh_korakov}}</div>
+                <div class="form-group row">
+                    <label for="ime" class="col-sm-3 col-form-label">Ime</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control form-control-round" id="ime" name="ime" formControlName="ime" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.ime.errors }">
+                        <div *ngIf="klik_za_naslednji_korak && field.ime.errors" class="invalid-feedback">
+                            <div *ngIf="field.ime.errors.required">Prosim vnesite ime</div>
+                            <div *ngIf="field.ime.errors.minlength">Ime mora vsebovati vsaj 2 zanaka</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-header-description row">
-                    <span class="card-header-description-item" [ngClass]="{'show' : trenutni_korak == 1}">Osebni podatki</span>
-                    <span class="card-header-description-item" [ngClass]="{'show' : trenutni_korak == 2}">Izbira izobrazbe</span>
-                    <span class="card-header-description-item" [ngClass]="{'show' : trenutni_korak == 3}">Predogled podatkov</span>
+                <div class="form-group row">
+                    <label for="priimek" class="col-sm-3 col-form-label">Priimek</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control form-control-round" id="priimek" formControlName="priimek" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.priimek.errors }"> 
+                        <div *ngIf="klik_za_naslednji_korak && field.priimek.errors" class="invalid-feedback">
+                        <div *ngIf="field.priimek.errors.required">Prosim vnesite priimek</div>
+                        <div *ngIf="field.priimek.errors.minlength">Priimek mora vsebovati vsaj 2 zanaka</div>
+                        </div>
+                    </div>
                 </div>
-                <hr>
-                <div class="card-content" [ngClass]="{'show' : trenutni_korak == 1}">
-                    <div class="step-counter">Korak {{trenutni_korak}}/{{stevilo_vseh_korakov}}</div>
-                    <div class="form-group row">
-                        <label for="ime" class="col-sm-3 col-form-label">Ime</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control form-control-round" id="ime" name="ime" formControlName="ime" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.ime.errors }">
-                           <div *ngIf="klik_za_naslednji_korak && field.ime.errors" class="invalid-feedback">
-                              <div *ngIf="field.ime.errors.required">Prosim vnesite ime</div>
-                              <div *ngIf="field.ime.errors.minlength">Ime mora vsebovati vsaj 2 zanaka</div>
-                           </div>
+                <div class="form-group row">
+                    <label for="naslov" class="col-sm-3 col-form-label">Naslov</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control form-control-round" id="naslov" formControlName="naslov" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.naslov.errors }">
+                        <div *ngIf="klik_za_naslednji_korak && field.naslov.errors" class="invalid-feedback">
+                        <div *ngIf="field.naslov.errors.required">Prosim vnesite naslov</div>
+                        <div *ngIf="field.naslov.errors.minlength">Naslov mora vsebovati vsaj 5 znakov</div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="priimek" class="col-sm-3 col-form-label">Priimek</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control form-control-round" id="priimek" formControlName="priimek" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.priimek.errors }"> 
-                          <div *ngIf="klik_za_naslednji_korak && field.priimek.errors" class="invalid-feedback">
-                            <div *ngIf="field.priimek.errors.required">Prosim vnesite priimek</div>
-                            <div *ngIf="field.priimek.errors.minlength">Priimek mora vsebovati vsaj 2 zanaka</div>
-                         </div>
+                </div>
+                <div class="form-group row">
+                    <label for="telefon" class="col-sm-3 col-form-label">Telefonska številka</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control form-control-round" id="telefon" formControlName="telefon" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.telefon.errors }">
+                        <div *ngIf="klik_za_naslednji_korak && field.telefon.errors" class="invalid-feedback">
+                        <div *ngIf="field.telefon.errors.required">Prosim vnesite telefonsko številko</div>
+                        <div *ngIf="field.telefon.errors.pattern">Prosim vnesite veljavno telefonsko številko</div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="naslov" class="col-sm-3 col-form-label">Naslov</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control form-control-round" id="naslov" formControlName="naslov" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.naslov.errors }">
-                          <div *ngIf="klik_za_naslednji_korak && field.naslov.errors" class="invalid-feedback">
-                            <div *ngIf="field.naslov.errors.required">Prosim vnesite naslov</div>
-                            <div *ngIf="field.naslov.errors.minlength">Naslov mora vsebovati vsaj 5 znakov</div>
-                         </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="telefon" class="col-sm-3 col-form-label">Telefonska številka</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control form-control-round" id="telefon" formControlName="telefon" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.telefon.errors }">
-                          <div *ngIf="klik_za_naslednji_korak && field.telefon.errors" class="invalid-feedback">
-                            <div *ngIf="field.telefon.errors.required">Prosim vnesite telefonsko številko</div>
-                            <div *ngIf="field.telefon.errors.pattern">Prosim vnesite veljavno telefonsko številko</div>
-                         </div>
-                        </div>
-                    </div>
-                    <div class="form-group clearfix">
-                        <a href="javascript:;" class="card-btn card-btn-shadow float-right" (click)="validate_osebni_podatki()">Nadaljuj</a>
-                    </div>
-                </div>	
+                </div>
+                <div class="form-group clearfix float-right card-actions">
+                    <a href="javascript:;" class="card-btn card-btn-shadow" (click)="validate_osebni_podatki()">Nadaljuj</a>
+                </div>
+                </form>
+            </div>	
                 
-                <!-- KORAK 2 -->
+            <!-- KORAK 2 -->
 
-                <div class="card-content" [ngClass]="{'show' : trenutni_korak == 2}">
+            <div class="card-content" [ngClass]="{'show' : trenutni_korak == 2}">
+                <form [formGroup]="izobrazbaForm">
                     <div class="step-counter">Korak {{trenutni_korak}}/{{stevilo_vseh_korakov}}</div>
                     <div class="form-group row">
-                        <label for="ime" class="col-sm-3 col-form-label">Ime</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control form-control-round" id="ime" name="ime" formControlName="ime" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.ime.errors }">
-                           <div *ngIf="klik_za_naslednji_korak && field.ime.errors" class="invalid-feedback">
-                              <div *ngIf="field.ime.errors.required">Prosim vnesite ime</div>
-                              <div *ngIf="field.ime.errors.minlength">Ime mora vsebovati vsaj 2 zanaka</div>
-                           </div>
+                        <label for="ime" class="col-sm-3 col-form-label">Naziv izobrazbe</label>
+                        <div class="col-sm-6">
+                            <select (change)="prikazi_izobrazbo()" class="form-control form-control-round form-control-select" id="izobrazba" formControlName="izobrazba" [ngClass]="{ 'is-invalid-select': klik_za_naslednji_korak && selected.izobrazba.errors}">
+                                <option value="" disabled>Prosim izberite naziv</option>
+                                <option *ngFor="let izobrazba of izobrazbe" [ngValue]="izobrazba">{{izobrazba.naziv}}</option>
+                            </select>
+                            <div *ngIf="klik_za_naslednji_korak && selected.izobrazba.errors" class="invalid-feedback">
+                                <div *ngIf="selected.izobrazba.errors.required">Prosim izberite naziv</div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="priimek" class="col-sm-3 col-form-label">Priimek</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control form-control-round" id="priimek" formControlName="priimek" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.priimek.errors }"> 
-                          <div *ngIf="klik_za_naslednji_korak && field.priimek.errors" class="invalid-feedback">
-                            <div *ngIf="field.priimek.errors.required">Prosim vnesite priimek</div>
-                            <div *ngIf="field.priimek.errors.minlength">Priimek mora vsebovati vsaj 2 zanaka</div>
-                         </div>
+                        <label for="ime" class="col-sm-3 col-form-label">Informacije</label>
+                        <div class="col-sm-6">
+                            <p>Naziv: <u>{{uporabnik.izobrazba.naziv}}</u></p>
+                            <p>Dolg naziv: <u>{{uporabnik.izobrazba.dolgi_naziv}}</u></p>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="naslov" class="col-sm-3 col-form-label">Naslov</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control form-control-round" id="naslov" formControlName="naslov" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.naslov.errors }">
-                          <div *ngIf="klik_za_naslednji_korak && field.naslov.errors" class="invalid-feedback">
-                            <div *ngIf="field.naslov.errors.required">Prosim vnesite naslov</div>
-                            <div *ngIf="field.naslov.errors.minlength">Naslov mora vsebovati vsaj 5 znakov</div>
-                         </div>
-                        </div>
+                    <div class="form-group clearfix float-right card-actions">
+                        <a href="javascript:;" class="card-btn card-btn-secondary card-btn-shadow-secondary" (click)="korak_nazaj()">Nazaj</a>
+                        <a href="javascript:;" class="card-btn card-btn-shadow" (click)="validate_izobrazba()">Nadaljuj</a>
                     </div>
-                    <div class="form-group row">
-                        <label for="telefon" class="col-sm-3 col-form-label">Telefonska številka</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control form-control-round" id="telefon" formControlName="telefon" [ngClass]="{ 'is-invalid': klik_za_naslednji_korak && field.telefon.errors }">
-                          <div *ngIf="klik_za_naslednji_korak && field.telefon.errors" class="invalid-feedback">
-                            <div *ngIf="field.telefon.errors.required">Prosim vnesite telefonsko številko</div>
-                            <div *ngIf="field.telefon.errors.pattern">Prosim vnesite veljavno telefonsko številko</div>
-                         </div>
-                        </div>
-                    </div>
-                    <div class="form-group clearfix">
-                        <a href="javascript:;" class="card-btn card-btn-shadow float-right" (click)="validate_osebni_podatki()">Nadaljuj</a>
-                    </div>
-                </div>	
+                </form>
+            </div>	
 
 
+            <!-- KORAK 3-->
 
-                <div class="card-content">
-                    <h5>Bank Information</h5>
-                    <div class="form-group">
-                        <input type="text" class="form-control wizard-required" id="bname">
-                        <label for="bname" class="wizard-form-text-label">Bank Name*</label>
-                        <div class="wizard-form-error"></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control wizard-required" id="brname">
-                        <label for="brname" class="wizard-form-text-label">Branch Name*</label>
-                        <div class="wizard-form-error"></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control wizard-required" id="acname">
-                        <label for="acname" class="wizard-form-text-label">Account Name*</label>
-                        <div class="wizard-form-error"></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control wizard-required" id="acon">
-                        <label for="acon" class="wizard-form-text-label">Account Number*</label>
-                        <div class="wizard-form-error"></div>
-                    </div>
-                    <div class="form-group clearfix">
-                        <a href="javascript:;" class="card-previous-btn float-left">Previous</a>
-                        <a href="javascript:;" class="card-next-btn float-right">Next</a>
-                    </div>
-                </div>	
-            </form>
+            <div class="card-content" [ngClass]="{'show' : trenutni_korak == 3}">
+                <div class="step-counter">Korak {{trenutni_korak}}/{{stevilo_vseh_korakov}}</div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Ime in priimek</label>
+                    <div class="col-sm-6 form-control izbrani-podatki">{{uporabnik.ime}} {{uporabnik.priimek}}</div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Naslov</label>
+                    <div class="col-sm-6 form-control izbrani-podatki">{{uporabnik.naslov}}</div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Telefon</label>
+                    <div class="col-sm-6 form-control izbrani-podatki">{{uporabnik.telefon}}</div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Naziv</label>
+                    <div class="col-sm-6 form-control izbrani-podatki">{{uporabnik.izobrazba.naziv}}</div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Dolgi naziv</label>
+                    <div class="col-sm-6 form-control izbrani-podatki">{{uporabnik.izobrazba.dolgi_naziv}}</div>
+                </div>
+
+                <div class="form-group clearfix float-right card-actions">
+                    <a href="javascript:;" class="card-btn card-btn-secondary card-btn-shadow-secondary" (click)="korak_nazaj()">Nazaj</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

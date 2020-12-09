@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+
+/**
+ * Nič posebnega samo naslov naloge.
+ */
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
