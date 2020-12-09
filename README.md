@@ -29,7 +29,7 @@ ng serve
 
 ## Delovanje:
 
-![](/delovanje/delovanje.gif)
+![](https://github.com/NejcZun/EnostavenCarovnik/blob/master/delovanje/delovanje.gif)
 
 
 
