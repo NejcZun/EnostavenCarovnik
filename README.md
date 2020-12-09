@@ -4,7 +4,7 @@
 ## Kazalo
 * [Zagon](#zagon)
 * [Moduli](#moduli)
-* [Delovanje](#delovanje)
+* [Izvajanje](#izvajanje)
 
 
 
@@ -27,7 +27,7 @@ ng serve
 - [Angular CDK](https://material.angular.io/cdk/categories) version 11.0.2
 
 
-## Delovanje:
+## Izvajanje:
 
 ![](https://github.com/NejcZun/EnostavenCarovnik/blob/master/delovanje/delovanje.gif)
 
