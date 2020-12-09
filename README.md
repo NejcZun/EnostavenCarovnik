@@ -29,6 +29,7 @@ ng serve
 
 ## Delovanje:
 
+![](/delovanje/delovanje.gif)
 
 
 
