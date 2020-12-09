@@ -10,7 +10,7 @@
 
 ## Zagon:
 
-Po nastavitvah se postavite v root direktorij in izvršite ukaz:
+Po nalozenih modulih se postavite v izvorni direktorij in zaženite build programa
 ```Javascript
 ng build --prod
 ```
