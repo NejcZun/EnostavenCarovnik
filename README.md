@@ -1,27 +1,38 @@
 # Enostaven Čarovnik
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
 
-## Development server
+## Kazalo
+* [Zagon](#zagon)
+* [Moduli](#moduli)
+* [Delovanje](#delovanje)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Zagon:
 
-## Build
+Po nastavitvah se postavite v root direktorij in izvršite ukaz:
+```Javascript
+ng build --prod
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Po končanem buildanju projekta projekt zaženemo z ukazom:
+```
+ng serve
+```
 
-## Running unit tests
+## Moduli:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
+- [Bootstrap 4](https://ng-bootstrap.github.io/#/getting-started) version 4.5.3
+- [Angular CDK](https://material.angular.io/cdk/categories) version 11.0.2
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Delovanje:
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+
+
+
